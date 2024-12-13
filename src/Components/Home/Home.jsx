@@ -53,7 +53,7 @@ export default function Home() {
                     <h1 className="text-4xl sm:text-5xl font-bold mb-4 mt-4 sm:mt-0 text-center text-violet-900 sm:text-white animate-slide-in">
                         IF YOU'RE NOT FIRST,
                     </h1>
-                    <h1 className="text-4xl sm:text-5xl ml-14 sm:ml-0 font-bold mb-4 text-center text-violet-900 sm:text-white animate-slide-in">
+                    <h1 className="text-4xl sm:text-5xl ml-12 sm:ml-0 font-bold mb-4 text-center text-violet-900 sm:text-white animate-slide-in">
                         YOU'RE LAST!
                     </h1>
 

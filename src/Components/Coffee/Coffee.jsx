@@ -76,7 +76,7 @@ export default function Business() {
         <div className="mt-20">
           <img src="https://www.deathwishcoffee.com/cdn/shop/files/dwc-logo.png?v=1624458280&width=300" alt="Logo" className="w-48 h-48" />
         </div>
-        <h1 className="text-5xl font-serif text-white text-center uppercase sm:mt-16">Best Sellers</h1>
+        <h1 className="sm:text-5xl text-4xl font-serif text-white text-center uppercase sm:mt-16 mr-4">Best Sellers</h1>
       </div>
       <div className="container mx-auto bg-black px-0 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {products.map((product) => (
@@ -90,7 +90,7 @@ export default function Business() {
               onClick={() => handleAddToCart(product)}
               className={`${
                 addedItems.includes(product.id) ? 'bg-violet-700' : 'bg-violet-900'
-              } mt-2 text-white px-4 py-2 rounded-lg hover:bg-violet-700`}
+              } mt-2 ml-32 sm:ml-0 text-white px-4 py-2 rounded-lg hover:bg-violet-700`}
             >
               {addedItems.includes(product.id) ? 'Added to Cart' : 'Buy Now'}
             </button>

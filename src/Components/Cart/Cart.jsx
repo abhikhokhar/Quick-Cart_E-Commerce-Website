@@ -64,6 +64,7 @@ export default function Cart() {
                     className="w-full h-auto object-cover rounded-md mb-4"
                   />
                   <h3 className="text-lg font-semibold text-gray-700">{item.name}</h3>
+                  <div class="text-yellow-500 text-sm mt-1">&#9733;&#9733;&#9733;&#9733;&#9734; (4.5)</div>
                   <p className="text-lg font-bold text-red-600 mt-2">₹{item.price}</p>
                   {isAdded ? (
                     <>
