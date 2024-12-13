@@ -10,10 +10,9 @@ import Games from './Components/Games/Games.jsx';
 import Business from './Components/Business/Business.jsx';
 import Ladies from './Components/Ladies/Ladies.jsx';
 import Offers from './Components/Offers/Offers.jsx';
-import { CartProvider } from './Components/CartContext/CartContext'; // Ensure correct path
+import { CartProvider } from './Components/CartContext/CartContext'; 
 import Cart from './Components/Cart/Cart.jsx';
 
-// Create the router
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -24,7 +23,7 @@ const router = createBrowserRouter(
       <Route path="business" element={<Business />} />
       <Route path="ladies" element={<Ladies />} />
       <Route path="offers" element={<Offers />} />
-      <Route path="cart" element={<Cart />} /> {/* Note lowercase path */}
+      <Route path="cart" element={<Cart />} /> 
     </Route>
   )
 );
