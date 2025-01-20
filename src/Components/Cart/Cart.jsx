@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../CartContext/CartContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useFetcher } from 'react-router-dom';
 
 export default function Cart() {
   const { cartItems } = useCart();
@@ -10,9 +10,30 @@ export default function Cart() {
   });
   const [showTotal, setShowTotal] = useState(false);
 
+
   useEffect(() => {
     localStorage.setItem('billingItems', JSON.stringify(billingItems));
   }, [billingItems]);
+  const [cartCards, setcartCards] = useState(() => {
+    const storedCarts = localStorage.getItem("cartCards");
+    try {
+        return storedCarts ? JSON.parse(storedCarts) : [];
+
+    } catch (error) {
+        console.error("Error parsing JSON from localStorage:", error);
+        return [];
+    }
+});
+
+useEffect(() => {
+  if (cartItems && Array.isArray(cartItems) && cartItems.length > 0) {
+      setcartCards(cartItems);
+      localStorage.setItem("cartCards", JSON.stringify(cartItems));
+  }
+}, [cartItems]);
+
+console.log(localStorage.getItem("cartCards"));
+
 
   const handleAddForBilling = (item) => {
     setBillingItems((prevItems) => {
@@ -22,6 +43,8 @@ export default function Cart() {
       return prevItems;
     });
   };
+
+
 
   const handleRemoveFromBilling = (itemId) => {
     setBillingItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
@@ -40,7 +63,7 @@ export default function Cart() {
       />
       <div className="p-6 max-w-7xl mx-auto">
         <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-800">Your Shopping Cart</h2>
-        {cartItems.length === 0 ? (
+        {cartCards.length === 0 ? (
           <div className="text-center mt-20">
             <p className="text-2xl font-medium text-gray-600">Your cart is currently empty.</p>
             <NavLink to="/offers">
@@ -51,7 +74,7 @@ export default function Cart() {
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {cartItems.map((item) => {
+            {cartCards.map((item) => {
               const isAdded = billingItems.some((billingItem) => billingItem.id === item.id);
               return (
                 <div
